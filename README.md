@@ -1,8 +1,9 @@
 ### Readme
 
 ```bash
+#must by installed : nodeJS, Git
 git clone https://github.com/SergeyGuns/react-timer.git
 cd react-timer
-yarn
+npm i
 npm start
 ```

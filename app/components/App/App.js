@@ -10,15 +10,21 @@ export default class App extends React.Component {
         startTime: Date.now(),
         diffTime:0,
         timeTrackOn: false,
-        interval: null
+        interval: null,
+        lastUpdate: Date.now()
       }
   }
 
   step() {
-    if(this.state.timeTrackOn && Date.now() - this.state.startTime > 100) {
+    if(this.state.timeTrackOn && Date.now() - this.state.lastUpdate > 20) {
       // console.log(this)
       this.setState({
         diffTime: Date.now() - this.state.startTime,
+        lastUpdate: Date.now(),
+        interval: requestAnimationFrame(this.step.bind(this))
+      })
+    } else {
+      this.setState({
         interval: requestAnimationFrame(this.step.bind(this))
       })
     }
